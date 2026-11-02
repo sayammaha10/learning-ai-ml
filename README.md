@@ -11,3 +11,7 @@ This repository documents my learning journey in Artificial Intelligence (AI) an
 
 - **Supervised Learning:** Learned how algorithms use labeled data to map inputs to outputs, including its two major types: regression and classification.
 - **Unsupervised Learning:** Learned how algorithms discover patterns and structures in unlabeled data through techniques such as clustering, anomaly detection, and dimensionality reduction.
+
+## 1.2 Regression Model
+
+- **Linear Regression Model:** Learned how linear regression uses a straight line to predict numerical values, including how input features, target values, and training examples are represented in a training set.
