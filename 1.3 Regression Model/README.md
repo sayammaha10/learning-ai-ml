@@ -140,9 +140,9 @@ For now, let's represent the function using a straight line:
 
 **Linear Function:**
 
-\[
-f\_{w,b}(x) = wx + b
-\]
+$$
+f_{w,b}(x) = wx + b
+$$
 
 Here:
 
@@ -151,9 +151,9 @@ Here:
 
 The function can also be written more simply as:
 
-\[
+$$
 f(x) = wx + b
-\]
+$$
 
 Both notations represent the same function. The shorter notation omits `w` and `b` from the subscript for simplicity.
 
