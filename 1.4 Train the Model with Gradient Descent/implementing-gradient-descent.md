@@ -16,11 +16,9 @@ These update steps are repeated until the parameters no longer change significan
 
 In the update equations above, the equal sign represents an **assignment** operation. It means: take the value on the right-hand side and store it as the new value of the parameter on the left-hand side.
 
-This is different from a mathematical statement of equality. For example, writing $a = a + 1$ is a valid assignment that increments the value of $a$, even though the mathematical statement “$a$ equals $a + 1$” can never be true.
+This is different from a mathematical statement of equality. For example, writing $a = a + 1$ is a valid assignment that increments the value of $a$, even though the mathematical statement "$`a`$ equals $`a + 1`$" can never be true.
 
-In Python and other programming languages, the double equal sign (`==`) is used to test whether two values are equal.
-
-However, in mathematical notation, the equal sign can represent either an assignment or a statement of equality, depending on the context.
+In Python and other programming languages, the double equal sign (`==`) is used to test whether two values are equal. However, in mathematical notation, the equal sign can represent either an assignment or a statement of equality, depending on the context.
 
 ## 2. The Learning Rate $\alpha$
 
@@ -52,27 +50,9 @@ This means calculating the new values of both parameters using their original va
 
 ### Correct Implementation (Simultaneous Update)
 
-1. Compute the new value for $w$ using the **current** values of $w$ and $b$, and store it in a temporary variable:
-
-   $$
-   \text{temp}_w = w - \alpha \frac{\partial}{\partial w} J(w, b)
-   $$
-
-2. Compute the new value for $b$ using the **same current** values of $w$ and $b$, and store it in another temporary variable:
-
-   $$
-   \text{temp}_b = b - \alpha \frac{\partial}{\partial b} J(w, b)
-   $$
-
-3. Only after both temporary values have been calculated, assign them back to the parameters:
-
-   $$
-   w = \text{temp}_w
-   $$
-
-   $$
-   b = \text{temp}_b
-   $$
+1. Compute the new value for $w$ using the **current** values of $w$ and $b$, and store it in a temporary variable: $\text{temp}_w = w - \alpha \frac{\partial}{\partial w} J(w, b)$
+2. Compute the new value for $b$ using the **same current** values of $w$ and $b$, and store it in another temporary variable: $\text{temp}_b = b - \alpha \frac{\partial}{\partial b} J(w, b)$
+3. Only after both temporary values have been calculated, assign them back to the parameters: $w = \text{temp}_w$ and $b = \text{temp}_b$
 
 Both updates use the original, pre-update values of $w$ and $b$, ensuring that neither update affects the calculation of the other.
 
@@ -88,32 +68,17 @@ In this approach:
 2. The new value of $b$ is then calculated using the already updated value of $w$.
 3. As a result, the calculation of the update for $b$ differs from the one performed in the correct simultaneous implementation.
 
-Although non-simultaneous updates may still work more or less, they effectively produce a different algorithm with different properties.
-
-When people refer to gradient descent, they always mean the version that performs a simultaneous update of all parameters. Therefore, the simultaneous update approach should always be used when implementing gradient descent.
+Although non-simultaneous updates may still work more or less, they effectively produce a different algorithm with different properties. When people refer to gradient descent, they always mean the version that performs a simultaneous update of all parameters. Therefore, the simultaneous update approach should always be used when implementing gradient descent.
 
 <img src="images/gradient-descent/non-simultaneous-update.png" alt="Incorrect non-simultaneous update of w and b" width="300">
 
 ## 5. Convergence
 
-The algorithm is said to have **converged** when the parameters $w$ and $b$ stop changing significantly with additional iterations.
-
-At this point, the process has reached (or is very close to) a local minimum of the cost function.
+The algorithm is said to have **converged** when the parameters $w$ and $b$ stop changing significantly with additional iterations. At this point, the process has reached (or is very close to) a local minimum of the cost function.
 
 ## 6. Key Takeaways
 
-- Gradient descent repeatedly applies the update rules:
-
-  $$
-  w := w - \alpha \frac{\partial J}{\partial w}
-  $$
-
-  $$
-  b := b - \alpha \frac{\partial J}{\partial b}
-  $$
-
-  until convergence.
-
+- Gradient descent repeatedly applies the update rules $w := w - \alpha \frac{\partial J}{\partial w}$ and $b := b - \alpha \frac{\partial J}{\partial b}$ until convergence.
 - The learning rate $\alpha$ controls the size of each step.
 - The derivative terms determine the direction and, together with the learning rate, the size of each update.
 - The equal sign can represent an assignment operation or a mathematical statement of equality, depending on the context.
