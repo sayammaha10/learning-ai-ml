@@ -25,3 +25,14 @@ This repository documents my learning journey in Artificial Intelligence (AI) an
 - **Visualization Examples:** Compared different parameter values to understand how the prediction line's fit relates to its corresponding cost.
 
 [View Notes](./1.3%20Regression%20Model/)
+
+## 1.4 Train the Model with Gradient Descent
+
+- **Gradient Descent:** Learned how gradient descent systematically finds parameter values that minimize a cost function by repeatedly taking steps in the direction of steepest descent.
+- **Implementing Gradient Descent:** Learned the update rules for the parameters $w$ and $b$, the role of the learning rate $\alpha$, and the importance of simultaneous updates.
+- **Gradient Descent Intuition:** Developed an understanding of how the size and direction of each step depend on the learning rate and the derivative of the cost function.
+- **Learning Rate:** Explored how different values of the learning rate affect the behavior of gradient descent, including the risks of steps that are too large or too small.
+- **Gradient Descent for Linear Regression:** Derived the specific derivatives of the squared error cost function and applied them to train a linear regression model.
+- **Running Gradient Descent:** Observed how the algorithm iteratively improves the model parameters until it converges to a minimum of the cost function.
+
+[View Notes](./1.4%20Train%20the%20Model%20with%20Gradient%20Descent/)
