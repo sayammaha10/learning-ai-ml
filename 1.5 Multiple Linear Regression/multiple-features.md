@@ -10,95 +10,125 @@ $$
 f_{w,b}(x) = wx + b
 $$
 
-With multiple features available (such as size, number of bedrooms, number of floors, and age of the house), the model can make use of all of this information.
+With multiple features available (such as the size of the house, the number of bedrooms, the number of floors, and the age of the house), the model can make use of all of this information.
+
+<img src="images/multiple-features/multiple-features.png" alt="Multiple features for house price prediction" width="600">
 
 ## 2. Notation for Multiple Features
 
 The features are represented as:
 
 $$
-x_1, x_2, x_3, \dots, x_n
+x_1, x_2, x_3, x_4
 $$
 
-- $x_j$ refers to the $j$-th feature.
-- $n$ is the total number of features.
+- $x_j$ (or $x$ sub $j$) refers to the $j$-th feature.
+- $n$ is the total number of features. In this example, $n = 4$.
 
-The $i$-th training example is written as $x^{(i)}$. When there are multiple features, $x^{(i)}$ is a list (vector) that contains all the feature values for that example.
+As before, $x^{(i)}$ denotes the $i$-th training example. With multiple features, $x^{(i)}$ is a list of numbers (a **vector**) that includes all the features of the $i$-th training example.
 
-A specific feature in a specific training example is written as:
+**Example:**  
+$x^{(2)}$ is the feature vector for the second training example. It might look like:
 
 $$
-x^{(i)}_j
+x^{(2)} = [1416,\ 3,\ 2,\ 40]
 $$
 
-This is the value of feature $j$ in training example $i$.
+<img src="images/multiple-features/feature-vector-example.png" alt="Example of a feature vector for one training example" width="500">
+
+To refer to a specific feature in a specific training example, the notation $x^{(i)}_j$ is used.  
+For example, $x^{(2)}_3$ is the value of the third feature (number of floors) in the second training example.
+
+Sometimes an arrow is drawn on top of a symbol (for example, $\vec{x}^{(2)}$) to emphasize that it is a vector (a list of numbers) rather than a single number. This arrow is optional and is only used as a visual reminder.
 
 ## 3. The Model with Multiple Features
 
-With $n$ features, the linear regression model becomes:
+With multiple features, the model becomes:
 
 $$
-f_{\mathbf{w},b}(\mathbf{x}) = w_1 x_1 + w_2 x_2 + w_3 x_3 + \dots + w_n x_n + b
+f_{\mathbf{w},b}(\mathbf{x}) = w_1 x_1 + w_2 x_2 + w_3 x_3 + w_4 x_4 + b
 $$
 
-Each feature $x_j$ has its own parameter $w_j$. The parameter $b$ remains a single number (the bias or intercept term).
+**Example** (housing price prediction, with price in thousands of dollars):
 
-**Example interpretation** (housing price prediction):
+$$
+f(\mathbf{x}) = 0.1 x_1 + 4 x_2 + 10 x_3 - 2 x_4 + 80
+$$
 
-- $w_1 = 0.1$ → each additional square foot increases the predicted price by $100$ (when prices are in thousands of dollars)
-- $w_2 = 4$ → each additional bedroom increases the predicted price by $4{,}000$
-- $w_3 = 10$ → each additional floor increases the predicted price by $10{,}000$
-- $w_4 = -2$ → each additional year of age decreases the predicted price by $2{,}000$
-- $b = 80$ → base price of $80{,}000$
+Interpretation of the parameters:
+
+- $b = 80$ → base price of about $\$80{,}000$
+- $0.1$ → each additional square foot increases the price by $\$100$
+- $4$ → each additional bedroom increases the price by $\$4{,}000$
+- $10$ → each additional floor increases the price by $\$10{,}000$
+- $-2$ → each additional year of age decreases the price by $\$2{,}000$
+
+<img src="images/multiple-features/model-parameters-interpretation.png" alt="Interpretation of parameters in the multiple features model" width="550">
+
+In general, when there are $n$ features, the model is:
+
+$$
+f_{\mathbf{w},b}(\mathbf{x}) = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b
+$$
 
 ## 4. Vector Notation
 
-The parameters $w_1, w_2, \dots, w_n$ can be grouped into a single vector:
+The parameters $w_1, w_2, \dots, w_n$ can be grouped into a vector:
 
 $$
-\mathbf{w} = [w_1, w_2, \dots, w_n]
+\mathbf{w} = [w_1,\ w_2,\ \dots,\ w_n]
 $$
+
+An arrow is sometimes drawn on top ($\vec{w}$) to emphasize that this is a vector. The arrow is optional.
 
 The features of an example can also be written as a vector:
 
 $$
-\mathbf{x} = [x_1, x_2, \dots, x_n]
+\mathbf{x} = [x_1,\ x_2,\ \dots,\ x_n]
 $$
 
-Using this notation, the model can be written more compactly with the **dot product**:
+$b$ remains a single number (not a vector). The vector $\mathbf{w}$ together with the number $b$ are the parameters of the model.
+
+Using this notation, the model can be rewritten more compactly with the **dot product**:
 
 $$
 f_{\mathbf{w},b}(\mathbf{x}) = \mathbf{w} \cdot \mathbf{x} + b
 $$
 
-The dot product $\mathbf{w} \cdot \mathbf{x}$ is defined as:
+The dot product of two vectors is computed by multiplying corresponding pairs of numbers and then summing the results:
 
 $$
 \mathbf{w} \cdot \mathbf{x} = w_1 x_1 + w_2 x_2 + \dots + w_n x_n
 $$
 
-This is exactly the same expression as the expanded form shown earlier.
+This gives exactly the same expression as the expanded form of the model.
+
+<img src="images/multiple-features/dot-product-notation.png" alt="Expanded form versus compact dot product form of the model" width="550">
 
 ## 5. Multiple Linear Regression
 
 The version of linear regression that uses multiple input features is called **multiple linear regression**.
 
-This is different from univariate linear regression, which uses only a single feature.
+This is in contrast to univariate linear regression, which uses only a single feature.
+
+(Note: This is not the same as “multivariate regression,” which refers to something different.)
 
 ## 6. Key Takeaways
 
 - Multiple features allow the model to use more information when making predictions.
+- $x^{(i)}$ is a vector containing all features of the $i$-th training example.
+- $x^{(i)}_j$ is the $j$-th feature of the $i$-th training example.
+- An arrow on top of a symbol (optional) is sometimes used to emphasize that the symbol represents a vector.
 - The model with $n$ features is:
 
 $$
 f_{\mathbf{w},b}(\mathbf{x}) = w_1 x_1 + w_2 x_2 + \dots + w_n x_n + b
 $$
 
-- This can be written more compactly using vectors and the dot product:
+- This can be written more compactly using the dot product:
 
 $$
 f_{\mathbf{w},b}(\mathbf{x}) = \mathbf{w} \cdot \mathbf{x} + b
 $$
 
-- $n$ is the number of features, $x^{(i)}$ is the feature vector of the $i$-th training example, and $x^{(i)}_j$ is the $j$-th feature of that example.
 - This form of the algorithm is called **multiple linear regression**.
